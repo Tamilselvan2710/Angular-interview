@@ -1,0 +1,54 @@
+<div class="form-container" [formGroup]="registerForm">
+    <h2>Registration From</h2>
+    <p>please fill in the information below to register</p>
+
+    <div class="form-row">
+        <div class="form-group">
+            <input type="text" placeholder="Enter your first name" formControlName="firstName"/>
+            <div class="error" *ngIf="submitted && registerForm.get('firstName')?.errors?.['required']">First name is required</div> 
+        </div>
+        <div class="form-group">
+            <input type="text" placeholder="Enter your last name" formControlName="lastName"/>  
+            <div class="error" *ngIf="submitted && registerForm.get('lastName')?.errors?.['required']">Last name is required</div> 
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <input type="number" placeholder="Enter your age" formControlName="age"/> 
+            <div class="error"  *ngIf="submitted && registerForm.get('age')?.errors?.['required']">Age is required</div> 
+        </div>
+        <div class="form-group">
+            <input type="email" placeholder="Enter your email" formControlName="email"/>   
+            <div class="error" *ngIf="submitted && registerForm.get('email')?.errors?.['required']">Email is required</div> 
+        </div>
+    </div>
+
+    <div class="form-row">
+      <label><input type="radio" formControlName="gender" value="Male"/> Male </label> 
+      <label><input type="radio" formControlName="gender" value="Female"/> Female </label> 
+      <label><input type="radio" formControlName="gender" value="other"/> Prefer not to say </label> 
+       <div class="error" *ngIf="submitted && registerForm.get('gender')?.errors?.['required']">Gender is Required</div> 
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <input type="password" placeholder="Enter your password" formControlName="password"/> 
+            <div class="error" *ngIf="submitted && registerForm.get('password')?.errors?.['required']">password is required</div> 
+        </div>
+        <div class="form-group">
+           <input type="password" placeholder="Confirm your password" formControlName="confirmPassword"/>    
+            <div class="error" *ngIf="submitted && registerForm.get('confirmPassword')?.errors?.['required']">Confirm password is required</div> 
+        </div>
+    </div>
+
+    <label>
+        <input type="checkbox" formControlName="terms" /> I agree with terms and condition 
+        <div class="error" *ngIf="submitted && registerForm.get('terms')?.errors?.['required']">You must agree before submitting</div> 
+    </label> 
+
+     <div class="error" *ngIf="submitted && registerForm.errors?.['mismatch']">password do not match</div> 
+
+    <button (click)="onSubmit()">Register</button>
+
+</div>
